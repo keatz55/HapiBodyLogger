@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default ">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand" style="padding:10px 15px;">
+        <img ng-src="http://hapibody.com/wp-content/uploads/2016/09/Logomakr_7Ok6gj.png" style="height:30px;">
+      </a>
+    </div>
+
+    <div uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+    
+      <ul class="nav navbar-nav">
+        <li ng-repeat="item in $ctrl.menu" ui-sref-active="active">
+            <a ui-sref="{{item.state}}">{{item.title}}</a>
+        </li>
+        <!-- <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li> -->
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active">
+          <a ng-click="$ctrl.isCollapsed = true" ui-sref="log({date:$ctrl.dateSlug})">
+            <i class="glyphicon glyphicon-book"></i>
+            Log
+          </a>
+        </li>
+        <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active" style="border-right:1px solid #e9e9e9;">
+          <a ui-sref="report">
+            <i class="glyphicon glyphicon-stats"></i>
+            Reports
+          </a>
+        </li>
+        <li ng-show="$ctrl.isLoggedIn()" class="dropdown" uib-dropdown>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" uib-dropdown-toggle>
+            <i class="glyphicon glyphicon-user"></i>
+            {{ $ctrl.getCurrentUser().name }} 
+            <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu" uib-dropdown-menu>
+            <li>
+              <a ui-sref="settings">
+                <i class="glyphicon glyphicon-cog"></i>
+                Settings
+              </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li ng-show="$ctrl.isLoggedIn()">
+              <a ui-sref="logout">
+                <i class="glyphicon glyphicon-arrow-right"></i>
+                Logout
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active">
+          <a ui-sref="signup">Sign up</a>
+        </li>
+        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active">
+          <a ui-sref="login">Login</a>
+        </li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

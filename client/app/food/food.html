@@ -1,0 +1,74 @@
+<div style="background:#f5f5f5;padding:15px 0;">
+	<div class="container">
+		<h2 class="margin-0">
+			Add food to: {{$ctrl.params.meal}}
+		</h2>
+	</div>
+</div>
+
+<div style="padding:15px 0;">
+	<div class="container">
+		
+		<!-- <h4>Search our food database by name</h4>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+				    <input type="text" class="form-control" >
+				</div>
+			</div>
+		</div>	
+
+		<h4>
+			Past food from:
+			{{$ctrl.params.meal}}
+		</h4>
+		<table class="table">
+			<tbody>
+				<tr ng-repeat="f in $ctrl.food">
+					<td>
+						{{f}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<table class="table">
+			<tbody>
+				<tr ng-repeat="f in $ctrl.foodEntries">
+					<td>
+						{{f}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h4> 
+			Can't find what you're looking for?  Add a food to the database
+		</h4> -->
+		<div>
+			<a ui-sref="new-food($ctrl.params)" class="btn btn-lg btn-danger">
+				Add food 
+				<!-- to the database -->
+			</a>
+		</div>
+
+		<br>
+
+		<h4>
+			ToDo:
+		</h4>
+		<ul>
+			<li>
+				Search Stored/Public Foods
+			</li>
+			<li>
+				Quick Select Favorites/Past Foods
+			</li>
+			<li>
+				USDA API Integration
+			</li>
+		</ul>
+
+	</div>
+</div>

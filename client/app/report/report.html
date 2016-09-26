@@ -1,0 +1,50 @@
+<div style="background:#f0f0f0;padding:15px 0;">
+	<div class="container">
+		<h2 class="margin-0">
+			Reports
+
+			<div class="btn-group btn-group-lg" role="group">
+			  <a ui-sref="report" ui-sref-active="active" class="btn btn-danger">
+			  	Calories
+			  </a>
+			  <a ui-sref="carbs-report" ui-sref-active="active" class="btn btn-danger">
+			  	Carbs
+			  </a>
+			  <a ui-sref="fat-report" ui-sref-active="active" class="btn btn-danger">
+			  	Fat
+			  </a>
+			  <a ui-sref="protein-report" ui-sref-active="active" class="btn btn-danger">
+			  	Protein
+			  </a>
+			</div>
+
+		</h2>
+	</div>
+</div>
+
+<div style="background:#f9f9f9;padding:15px 0;">
+	<div class="container">
+		<h3 class="margin-0 text-center">
+			Calories Consumed Report
+		</h3>
+	</div>
+</div>
+
+<div style="padding:25px 0;">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-10">
+
+				<canvas id="base" class="chart-bar"
+				  chart-data="$ctrl.data" chart-labels="$ctrl.labels" chart-colors="$ctrl.colors"
+				  chart-dataset-override="$ctrl.datasetOverride" >
+				</canvas>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
