@@ -1,21 +1,20 @@
 'use strict';
 
 import angular from 'angular';
-
 import uiRouter from 'angular-ui-router';
-
 import routes from './log.routes';
-// import settings from './settings/settings.component';
+
+import moment from 'moment';
 
 export class LogComponent {
-
-  // $onInit() {}
 
   /*@ngInject*/
   constructor($state, Log, Meal, FoodEntry) {
     this.$state = $state;
     this.params = $state.params;
-    this.date = new Date(this.params.date);
+
+    this.date = moment(this.params.date,'MM-DD-YYYY');
+    this.dateDisplay = this.date.format('MMM D, YYYY');
 
     this.Log = Log;
     this.getLog();
@@ -101,16 +100,11 @@ export class LogComponent {
     return total;
   }
 
-  getDate(mealSlug) {
+  dateChange() {
 
-    if(!this.date) this.date = new Date();
+    if(!this.date) this.date = moment(this.params.date,'MM-DD-YYYY');
 
-    var mm = this.date.getMonth() + 1; // getMonth() is zero-based
-    var dd = this.date.getDate();
-    var yyyy = this.date.getFullYear()
-    var dateSlug = [ String(mm).length > 1 ? '' : '0', mm, '-', String(dd).length > 1 ? '' : '0', dd, '-', yyyy].join('');
-
-    this.$state.go('log',{date: dateSlug, meal: mealSlug},{reload:false});
+    this.$state.go('log',{date: moment(this.date).format('MM-DD-YYYY')},{reload:false});
   }
   
 }

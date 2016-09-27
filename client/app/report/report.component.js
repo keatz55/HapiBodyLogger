@@ -4,6 +4,8 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import routes from './report.routes';
 
+import reportNavbar from './_navbar/_navbar.component.js'
+
 import carbReport from './carbs/carbs.component';
 import fatReport from './fat/fat.component';
 import proteinReport from './protein/protein.component';
@@ -29,6 +31,7 @@ export class ReportComponent {
       this.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
 
       this.labels = this.getDateArray(this.params.days || 7);
+
       var lineData = [];
       for(var i=0;i<this.labels.length;i++)
         lineData.push(2000);
@@ -40,13 +43,14 @@ export class ReportComponent {
         var match = false;
         for(var j=0;j<res.length;j++) {
           var entry = res[j];
-          if(label === entry._id.date)
+          if(label === entry._id.date) 
             match = entry;
+          
         }
         if (!match) {
           barData.push(0);
         } else {
-          barData.push(this.extractData(entry));
+          barData.push(this.extractData(match));
         }
 
       }
@@ -107,7 +111,7 @@ export class ReportComponent {
  }
 }
 
-export default angular.module('hapiBodyLoggerApp.report', [uiRouter, angularChart, carbReport, fatReport, proteinReport])
+export default angular.module('hapiBodyLoggerApp.report', [uiRouter, reportNavbar, angularChart, carbReport, fatReport, proteinReport])
   .config(routes)
   .component('report', {
     template: require('./report.html'),

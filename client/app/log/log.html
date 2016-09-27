@@ -1,12 +1,12 @@
-<div style="background:#f5f5f5;padding: 15px 0;">
-	<div class="container">
+<div style="background:#f0f0f0;padding: 10px 0;">
+	<div class="container text-center">
 		<div class="row">
 			<div class="col-xs-12">
 
 				<div 
-					class="btn-group btn-group-lg"
+					class="btn-group btn-group-lg pull-left"
 					ng-model="$ctrl.date"
-					ng-change="$ctrl.getDate()"
+					ng-change="$ctrl.dateChange()"
 					uib-datepicker-popup="MM-dd-yyyy"
 					is-open="openCalendar"
 					lose-text="Close"
@@ -16,13 +16,15 @@
 					</button>
 					<button class="btn btn-lg btn-danger pointer bold" ng-click="openCalendar = true">
 						<strong>
-							{{ $ctrl.date | date }}
+							{{ $ctrl.dateDisplay }}
 						</strong>
 					</button>
-					<button ng-click="$ctrl.newMealSection = !$ctrl.newMealSection" ng-class="{ active: $ctrl.newMealSection }" class="btn btn-default">
-						<i class="glyphicon glyphicon-plus-sign"></i> Meal
-					</button>
 				</div>
+
+
+				<button ng-click="$ctrl.newMealSection = !$ctrl.newMealSection" ng-class="{ active: $ctrl.newMealSection }" class="btn  btn-lg btn-default pull-right">
+					<i class="glyphicon glyphicon-plus-sign"></i> Meal
+				</button>
 
 			</div>
 		</div>
@@ -57,9 +59,9 @@
 	<div style="overflow-x:auto;">
 
 		<table class="table" style="max-width:100%;">
-			<tbody ng-repeat="l in $ctrl.log" style="border:none;border-bottom:2px solid #f5f5f5;">
+			<tbody ng-repeat="l in $ctrl.log" style="border:none;border-bottom:3px solid #f5f5f5;">
 				<tr>
-					<th style="border:1px solid #fff;">
+					<th style="border:2px solid #fff;">
 						<h2 ng-show="!edit && !delete" class="margin-0">
 							{{l._id.name}}
 							&nbsp;
@@ -102,42 +104,42 @@
 							</p>
 						</div>
 					</th>
-					<th class="text-center" style="background:#ff6b6b;color:#fff;border:1px solid #fff;">
+					<th class="text-center" style="background:#ff6b6b;color:#fff;border:2px solid #fff;">
 						Calories<br>
 						kcal
 					</th>
-					<th class="text-center" style="background:#ff6b6b;color:#fff;border:1px solid #fff;">
+					<th class="text-center" style="background:#ff6b6b;color:#fff;border:2px solid #fff;">
 						Carbs<br>
 						g
 					</th>
-					<th class="text-center" style="background:#ff6b6b;color:#fff;border:1px solid #fff;">
+					<th class="text-center" style="background:#ff6b6b;color:#fff;border:2px solid #fff;">
 						Fat<br>
 						g
 					</th>
-					<th class="text-center" style="background:#ff6b6b;color:#fff;border:1px solid #fff;">
+					<th class="text-center" style="background:#ff6b6b;color:#fff;border:2px solid #fff;">
 						Protein<br>
 						g
 					</th>
-					<th style="border:1px solid #fff;"></th>
+					<th style="border:2px solid #fff;"></th>
 				</tr>
-				<tr ng-if="!l.foodEntries.length" style="background:#f5f5f5;"><td style="border:1px solid #fff;" colspan="6"></td></tr>
+				<tr ng-if="!l.foodEntries.length" style="background:#f5f5f5;"><td style="border:2px solid #fff;" colspan="6"></td></tr>
 				<tr ng-if="l.foodEntries.length" ng-repeat="foodEntry in l.foodEntries" style="background:#f5f5f5;">
-					<td style="border:1px solid #fff;">
+					<td style="border:2px solid #fff;">
 						{{foodEntry.food.name}}, {{foodEntry.food.brand}}, {{foodEntry.food.servingSize}} - {{foodEntry.servings}} serving(s)
 					</td>
-					<td style="border:1px solid #fff;" class="text-center">
+					<td style="border:2px solid #fff;" class="text-center">
 						{{foodEntry.food.calories}}
 					</td>
-					<td style="border:1px solid #fff;" class="text-center">
+					<td style="border:2px solid #fff;" class="text-center">
 						{{foodEntry.food.totalCarbs}}
 					</td>
-					<td style="border:1px solid #fff;" class="text-center">
+					<td style="border:2px solid #fff;" class="text-center">
 						{{foodEntry.food.totalFat}}
 					</td>
-					<td style="border:1px solid #fff;" class="text-center">
+					<td style="border:2px solid #fff;" class="text-center">
 						{{foodEntry.food.protein}}
 					</td>
-					<td style="border:1px solid #fff;" class="text-center">
+					<td style="border:2px solid #fff;" class="text-center">
 						<a ng-click="confirmation = true" ng-show="!confirmation" class="pointer">
 							<i class="glyphicon glyphicon-trash"></i>
 						</a>

@@ -39,7 +39,7 @@ export class FatComponent {
         if (!match) {
           barData.push(0);
         } else {
-          barData.push(this.extractData(entry));
+          barData.push(this.extractData(match));
         }
 
       }
